@@ -1,0 +1,193 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+@import "//at.alicdn.com/t/font_1320082_dcjxpmqk2s5.css";
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, a,
+img, ol, ul, li,
+form, label,
+table, tbody, tr, th, td,
+canvas, footer, header,
+nav, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom */
+a {
+  color: #000000;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  touch-action: pan-y;
+  touch-action: manipulation;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+input{
+  outline: none;
+  -webkit-appearance: none;
+}
+
+/*显示省略号*/
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearfix:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+.mar-t:before{
+  content:"";
+  display: table;
+}
+
+/*1px*/
+.my-1px,
+.my-1px-t,
+.my-1px-b,
+.my-1px-tb,
+.my-1px-l,
+.my-1px-r {
+  position: relative;
+}
+.my-1px:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  border: 1px solid #c7c7c7;
+  height: 200%;
+  transform-origin: left top;
+  transform: scale(0.5);
+}
+.my-1px-t:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #c7c7c7;
+  transform-origin: 0 0;
+}
+.my-1px-b:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #c7c7c7;
+  transform-origin: 0 100%;
+}
+.my-1px-tb:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #c7c7c7;
+  transform-origin: 0 0;
+}
+.my-1px-tb:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #c7c7c7;
+  transform-origin: 0 100%;
+}
+.my-1px-l:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-left: 1px solid #c7c7c7;
+  transform-origin: 0 0;
+}
+.my-1px-r:after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-right: 1px solid #c7c7c7;
+  transform-origin: 100% 0;
+}
+@media only screen and (-webkit-device-pixel-ratio: 2) {
+  .my-1px-b:after,
+  .my-1px-t:before,
+  .my-1px-tb:before,
+  .my-1px-tb:after {
+    transform: scaleY(0.5);
+  }
+  .my-1px-l:before,
+  .my-1px-r:after {
+    transform: scaleX(0.5);
+  }
+}
+@media only screen and (-webkit-device-pixel-ratio: 3) {
+  .my-1px-b:after,
+  .my-1px-t:before,
+  .my-1px-tb:before,
+  .my-1px-tb:after {
+    transform: scaleY(0.33333333);
+  }
+  .my-1px-l:before,
+  .my-1px-r:after {
+    transform: scaleX(0.33333333);
+  }
+}

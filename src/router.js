@@ -1,23 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import confirm from './views/Confirm'
+import slide from './views/Slide'
+import mask from './views/Masker'
+import tabs from './views/Tabs'
+import page from './views/Page'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+    { path: '/', name: 'home', component: Home},
+    { path: '/confirm', name: 'confirm', component: confirm},
+    { path: '/slide', name: 'slide', component: slide},
+    { path: '/mask', name: 'mask', component: mask},
+    { path: '/tabs', name: 'tabs', component: tabs},
+    { path: '/page', name: 'page', component: page},
   ]
 })
