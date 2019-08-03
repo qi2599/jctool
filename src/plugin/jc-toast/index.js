@@ -8,6 +8,7 @@ export default {
     })
     document.body.appendChild(vm.$el)
     let timeId
+    let time2
     let showToast = function (text,time=2000){
       vm.text = text
       vm.isShow = true
@@ -16,10 +17,11 @@ export default {
         vm.opacity = 1
       },20)
       clearInterval(timeId)
+      clearInterval(time2)
       timeId = setTimeout(()=>{
         vm.scale = 0.7
         vm.opacity = 0
-        setTimeout(()=>{
+        time2 = setTimeout(()=>{
           vm.scale = 1.2
           vm.isShow = false
         },300)

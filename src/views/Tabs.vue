@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<navbar :title="'tab 栏'"></navbar>
+		<div class="para"><p> tab 栏组件还是比较常见的，这里的 tab 栏主要是结合 jc-page 组件使用。</p></div>
 		<titler>基本</titler>
 		<jc-tab v-model="tabIndex">
 			<jc-tab-item >全部订单</jc-tab-item>
@@ -45,12 +46,12 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">jc-tab</span>&gt;</span>
 </code></pre>
 		</div>
-		<titler>参数 API</titler>
+		<titler>API</titler>
 		<div>
 			<table>
 				<thead>
 				<tr>
-					<th>参数</th>
+					<th>属性</th>
 					<th>说明</th>
 					<th>类型</th>
 					<th>默认值</th>
@@ -100,7 +101,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td><strong>tab-item 参数</strong></td>
+					<td><strong>tab-item</strong></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -122,8 +123,8 @@
     data(){
       return{
         tabIndex:0,
-				tabIndex2:1,
-				tabIndex3:2,
+				tabIndex2:0,
+				tabIndex3:0,
 				tabIndex4:0,
 			}
 		}

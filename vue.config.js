@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: './',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
@@ -8,5 +9,6 @@ module.exports = {
         path.resolve(__dirname, './src/common/less/index.less'),
       ]
     }
-  }
+  },
+  productionSourceMap:false
 }

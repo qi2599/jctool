@@ -2,8 +2,8 @@
   <div id="confirm" v-show="isShow" :class="{show_confirm: toggleShow}" @touchstart.self="cloce" @touchmove.prevent>
     <div class="jc-conwrap" :class="{'show-jc-conwrap': toggleShow}">
       <div class="jc-concontent">
-        <p>{{text}}</p>
-        <div @click="onConfirm" v-html="confirmText"></div>
+        <div class="jc-confirm">{{text}}</div>
+        <div class='jc-confirm-btn' @click="onConfirm" v-html="confirmText"></div>
       </div>
       <div class='jc-cancel' @click="onCancel" v-html="cancelText"></div>
     </div>
@@ -40,7 +40,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
   #confirm {
     position: fixed;
     z-index: 5;
@@ -71,24 +71,24 @@
     border-radius: 12px;
     overflow: hidden;
   }
-  #confirm .jc-conwrap .jc-concontent p {
+  #confirm .jc-conwrap .jc-concontent .jc-confirm {
     height: 50px;
     line-height: 50px;
     color: #8a8a8a;
   }
-  #confirm .jc-conwrap .jc-concontent div {
+  #confirm .jc-conwrap .jc-concontent .jc-confirm-btn {
     line-height: 50px;
     font-size: 20px;
     color: #ff0b00;
     transition: background-color 0.2s;
   }
-  #confirm .jc-conwrap .jc-concontent div:before {
+  #confirm .jc-conwrap .jc-concontent .jc-confirm-btn:before {
     content: '';
     display: block;
     height: 1px;
     background-color: #c7c7c7;
   }
-  #confirm .jc-conwrap .jc-concontent div:active {
+  #confirm .jc-conwrap .jc-concontent .jc-confirm-btn:active {
     background: #cccccc;
   }
   #confirm .jc-conwrap .jc-cancel {

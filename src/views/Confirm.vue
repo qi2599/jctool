@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<navbar :title="'IOS风格对话框'"></navbar>
-		<titler>demo</titler>
+		<titler>演示</titler>
 		<mybtn @click.native="showConfirm">弹出对话框</mybtn>
 		<mybtn @click.native="setConfirm">自定义按钮文字</mybtn>
-		<titler>使用方法</titler>
+		<titler>如何使用</titler>
 		<div>
 			<pre class="hljs javascript"><code class="javascript"><span class="hljs-keyword">this</span>.$jcConfirm.show ({
     <span class="hljs-attr">text</span>: <span class="hljs-string">'确定要这样做吗？'</span>，
@@ -16,13 +16,13 @@
     }
 })
 </code></pre>
-			<titler>参数 API</titler>
+			<titler>API</titler>
 		</div>
 		<div>
 			<table>
 				<thead>
 				<tr>
-					<th>参数</th>
+					<th>属性</th>
 					<th>说明</th>
 					<th>类型</th>
 					<th>默认值</th>

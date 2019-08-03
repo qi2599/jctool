@@ -84,20 +84,20 @@
   }
 </script>
 
-<style lang="less" scoped>
-  .jc-tab{
-    position: relative;
-    display: flex;
-    overflow-x: auto;
-    -webkit-overflow-scrolling : touch;
-    text-align: center;
-    .jc-tab-bar{
-      position: absolute;
-      height: 2px;
-      transition: left 0.5s, width 0.5s;
-    }
-  }
-	.line-height{
+<style scoped>
+	.jc-tab {
+		position: relative;
+		display: flex;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		text-align: center;
+	}
+	.jc-tab .jc-tab-bar {
+		position: absolute;
+		height: 2px;
+		transition: left 0.5s, width 0.5s;
+	}
+	.line-height {
 		line-height: 40px;
 	}
 </style>

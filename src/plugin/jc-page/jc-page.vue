@@ -1,27 +1,27 @@
 <template>
-	<div class="jc-page">
+  <div class="jc-page">
     <div class="jc-page-wrap" ref="jcWrap"  :style="style" @touchstart="tStart" @touchmove="tMove" @touchend="tEnd" @transitionend="duration = 0">
-      <div class="jc-page-left" :style="`width:${pageWidth}px;`">
-        <div v-if="loading">
-          <div v-show="leftLoading || loop" class="jc-page-lodding" :style="`width:${pageWidth}px;`">
-            <img src="../common/loading.svg">
+      <div :style="`visibility:${(leftLoading || loop)? 'visible':'hidden'};`">
+        <div class="jc-page-left" :style="pageStyle">
+          <div class="jc-page-lodding" :style="`width:${pageWidth}px;`">
+            <img v-if="loading" src="../common/loading.svg">
+          </div>
+          <div>
+            <slot name="left"/>
           </div>
         </div>
-        <div v-show="leftLoading || loop">
-          <slot name="left" />
-        </div>
       </div>
-      <div class="jc-page-middle" :style="`width:${pageWidth}px;`">
+      <div class="jc-page-middle" :style="pageStyle">
         <slot></slot>
       </div>
-      <div class="jc-page-right" :style="`width:${pageWidth}px;`">
-        <div v-if="loading">
-          <div v-show="rightLoading || loop" class="jc-page-lodding" :style="`width:${pageWidth}px;`">
-            <img src="../common/loading.svg">
+      <div :style="`visibility:${(rightLoading || loop)? 'visible':'hidden'};`">
+        <div class="jc-page-right" :style="pageStyle">
+          <div class="jc-page-lodding" :style="`width:${pageWidth}px;`">
+            <img v-if="loading" src="../common/loading.svg">
           </div>
-        </div>
-        <div v-show="rightLoading || loop">
-          <slot name="right" />
+          <div>
+            <slot name="right" />
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +68,9 @@
           transition: `transform ${this.duration}ms`,
           transform: `translate3d(${this.moveDistance}px, 0, 0)`
         }
+      },
+      pageStyle(){
+        return `width:${this.pageWidth}px;position: relative;`
       }
     },
     methods:{
@@ -100,6 +103,7 @@
         e = e || event
         this.isX = true
         this.isFirst = true
+        this.nowPot = 0
         
         let ctouch = e.changedTouches[0]
         this.startDistance.x = ctouch.clientX
@@ -121,7 +125,7 @@
           }
         }
         this.moveDistance = this.elementDistance + this.nowPot
-        e.preventDefault()
+        if (e.cancelable) e.preventDefault()
       },
       tEnd(){
         if(this.elementDistance === 0 || this.elementDistance === -(2*this.pageWidth)) return
@@ -191,25 +195,26 @@
   }
 </script>
 
-<style lang="less" scoped>
-  .jc-page{
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-    .jc-page-wrap{
-      display: flex;
-      width: 300%;
-      .jc-page-lodding{
-        position: absolute;
-        text-align: center;
-        z-index: 99;
-        img{
-          height: 50px;
-          padding: 30px;
-        }
-      }
-    }
-  }
+<style scoped>
+	.jc-page {
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		position: relative;
+	}
+	.jc-page .jc-page-wrap {
+		display: flex;
+		width: 300%;
+	}
+	.jc-page .jc-page-wrap .jc-page-lodding {
+		position: absolute;
+		text-align: center;
+		z-index: 99;
+	}
+	.jc-page .jc-page-wrap .jc-page-lodding img {
+		height: 50px;
+		padding: 30px;
+	}
 </style>

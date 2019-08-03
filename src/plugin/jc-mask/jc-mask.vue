@@ -70,7 +70,7 @@
 </script>
 
 
-<style>
+<style scoped>
   #jc-mask{
     position: fixed;
     z-index: 99;

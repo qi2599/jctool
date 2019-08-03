@@ -20,22 +20,22 @@
   }
 </script>
 
-<style lang="less" scoped>
-.jc-toast{
-	position: fixed;
-	top: 35%;
-	z-index: 9999;
-	margin: auto;
-	left: 0;
-	right: 0;
-	text-align: center;
-	transition: transform 0.2s, opacity 0.2s;
-	.text{
+<style scoped>
+	.jc-toast {
+		position: fixed;
+		top: 35%;
+		z-index: 9999;
+		margin: auto;
+		left: 0;
+		right: 0;
+		text-align: center;
+		transition: transform 0.2s, opacity 0.2s;
+	}
+	.jc-toast .text {
 		padding: 10px 15px;
 		border-radius: 6px;
 		line-height: 40px;
 		color: white;
-		background-color: rgba(0,0,0,0.7);
+		background-color: rgba(0, 0, 0, 0.7);
 	}
-}
 </style>

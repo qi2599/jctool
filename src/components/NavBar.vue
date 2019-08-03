@@ -1,6 +1,6 @@
 <template>
 	<div id="nav-bar">
-		<div class="head">
+		<div class="head my-1px-b">
 			<i class="iconfont icon-arrow-left" @click="goBack"></i>
 			<span v-html="title"></span>
 		</div>
@@ -25,10 +25,15 @@
 <style lang="less" scoped>
 	#nav-bar{
 		.head{
-			height: 90/@rem;
-			line-height: 90/@rem;
+			position: fixed;
+			width: 100%;
+			z-index: 9;
+			top: 0;
+			height: 100/@rem;
+			line-height: 100/@rem;
 			color: @c2;
 			text-align: center;
+			background-color: white;
 			i{
 				position: absolute;
 				left: 30/@rem;
@@ -36,7 +41,7 @@
 			}
 		}
 		.box{
-		
+			height: 100/@rem;
 		}
 	}
 </style>

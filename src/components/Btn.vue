@@ -12,16 +12,20 @@
 
 <style lang="less" scoped>
 	.my-btn{
-		width: 95%;
-		margin: 10/@rem auto;
+		width: 90%;
+		margin: 20/@rem auto;
 		background-color: white;
 		text-align: center;
-		line-height: 3rem;
-		border: 1px solid #e8e8e8;
+		color: #40a9ff;
+		line-height: 2.5rem;
+		border: 1px solid #40a9ff;
 		border-radius: 10/@rem;
-		transition: background-color 0.2s;
+		transition: all 0.3s;
 		&:active{
-			background-color: #c7c7c7;
+			background-color: #f2f2f2;
+			color: #2359c5;
+			border: 1px solid #2359c5;
+			box-shadow: 0 0 0 5px rgba(64, 169, 255, 0.3);
 		}
 	}
 </style>

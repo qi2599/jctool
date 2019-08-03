@@ -69,6 +69,8 @@
           return {
             transition: `transform ${this.duration}ms`
           }
+        }else {
+          return {}
         }
       }
     },
@@ -90,7 +92,7 @@
         let nowY = touch.clientY
         let dis = nowY-this.startY
         if(dis<0) return;
-        ev.preventDefault()
+        if(ev.cancelable) ev.preventDefault()
         if(dis>=40) scale *= 150/(110+dis)
         this.moveDistance = dis*scale/2
         if(this.moveDistance>40) this.moveState = 1
@@ -183,31 +185,31 @@
   }
 </script>
 
-<style lang="less" scoped>
-  .inf_wrap{
+<style scoped>
+  .inf_wrap {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    -webkit-overflow-scrolling : touch;
-    .refresh{
-      text-align: center;
-      line-height: 40px;
-      height: 40px;
-      margin-top: -40px;
-      color: #b2b2b2;
-      letter-spacing: 1px;
-    }
-    .inf_img{
-      height: 40px;
-      width: 100%;
-      text-align: center;
-    }
-    .no_load{
-      text-align: center;
-      line-height: 40px;
-      color: #b2b2b2;
-      letter-spacing: 1px;
-    }
+    -webkit-overflow-scrolling: touch;
+  }
+  .inf_wrap .refresh {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    margin-top: -40px;
+    color: #b2b2b2;
+    letter-spacing: 1px;
+  }
+  .inf_wrap .inf_img {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+  }
+  .inf_wrap .no_load {
+    text-align: center;
+    line-height: 40px;
+    color: #b2b2b2;
+    letter-spacing: 1px;
   }
 </style>

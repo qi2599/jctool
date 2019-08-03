@@ -10,7 +10,11 @@
 		<mybtn @click.native="showMask">弹出遮罩</mybtn>
 		<titler>使用方法</titler>
 		<div>
-			<pre class="hljs xml"><code class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">jc-mask</span> <span class="hljs-attr">:opacity</span>=<span class="hljs-string">"0.6"</span> <span class="hljs-attr">:maskState</span>=<span class="hljs-string">"maskState"</span> <span class="hljs-attr">:flex</span>=<span class="hljs-string">"true"</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">"maskState=false"</span>&gt;</span>
+			<pre class="hljs xml"><code class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">jc-mask</span>
+        <span class="hljs-attr">:opacity</span>=<span class="hljs-string">"0.6"</span>
+        <span class="hljs-attr">:maskState</span>=<span class="hljs-string">"maskState"</span>
+        <span class="hljs-attr">:flex</span>=<span class="hljs-string">"true"</span>
+        @<span class="hljs-attr">close</span>=<span class="hljs-string">"maskState=false"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>插槽内容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">jc-mask</span>&gt;</span>
 </code></pre>
