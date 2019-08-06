@@ -63,7 +63,6 @@ body {
   touch-action: manipulation;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1;
-  letter-spacing: 1px;
 }
 input{
   outline: none;

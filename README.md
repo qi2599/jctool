@@ -1,3 +1,11 @@
+### 简介
+
+joce-ui 为个人组件库，主要是因为网络上未发现有相似的组件，或者不能满足作者的需求进而开发的一个 vue 组件库，所以 ”实用“ 和 ”唯一“ 是此组件库的特点。
+
+组件演示连接 <http://test.gkshwap.com/joce>
+
+<br>
+
 ### 如何安装
 
 下载 https://github.com/qi2599/joce-ui.git
@@ -20,15 +28,34 @@ import confirm from './plugin/confirm'
 Vue.use(confirm)
 ```
 
+Vue.use 之后会根据组件的使用，注册全局组件或往 Vue 的原型上添加方法
 
+<br>
 
 ### 注意事项
 
-带 * 的参数为必须参数
+带 * 的属性为必须属性
 
 组件自定义的类名样式请不要写在含有 scoped 属性的 style 标签中，否则可能造成样式不生效
 
+<br>
 
+### jc-notice
+
+公告栏
+
+```
+<jc-notice>
+	实用、精致的移动端 VUE 组件库
+</jc-notice>
+```
+
+| 属性  | 说明         | 类型    | 默认值 |
+| ----- | ------------ | ------- | ------ |
+| speed | 文字滚动速度 | number  | 8      |
+| icon  | 是否显示图标 | boolean | true   |
+
+<br>
 
 ### confirm
 
@@ -54,39 +81,47 @@ this.$jcConfirm.show ({
 | onConfirm   | Confirm 的回调   | function |        |
 | onCancel    | Cancel 的回调    | function |        |
 
-
+<br>
 
 ### jc-slide
 
 上拉加载、下拉刷新
 
-组件的 width 和 height 为 100%，使用上拉加载功能时，此组件的高度不能由插槽撑开，请使用指定高度的div包裹此组件
+使用上拉加载功能时，此组件的高度不能由插槽撑开，请使用指定高度的div包裹此组件。
 
 ```
-<jc-slide :on_refresh="refresh" :on_infinite="infinite" :text="'没有更多商品'" ref="myslide">
+<jc-slide 
+        :on_refresh="refresh" 
+        :on_infinite="infinite" 
+        :text="'没有更多商品'" 
+        ref="myslide">
 	<div>插槽内容</div>
 </jc-slide>
 ```
 
-| 参数                | 说明                                                         | 类型     | 默认值       |
+| 属性                | 说明                                                         | 类型     | 默认值       |
 | ------------------- | ------------------------------------------------------------ | -------- | ------------ |
-| text                | 调用 done( true )  之后显示的文字                            | string   | 没有更多数据 |
 | on_refresh( reset ) | 下拉刷新触发                                                 | function |              |
 | reset               | 下拉刷新成功后需要调用 reset()                               | function |              |
 | on_infinite( done ) | 上拉加载触发                                                 | function |              |
-| done                | 调用 done()  后下次上拉加载回调才会执行，<br />调用 done( true ) 下次上拉加载回调不会执行，<br />并显示 text 文字，亦可通过 $refs 调用此方法 | function |              |
-| distance            | 提前触发上拉加载的距离                                       | number   | 200          |
+| done                | 调用 done()  后下次上拉加载回调才会执行，<br>调用 done( true ) 下次上拉加载回调不会执行，<br>并显示 text 文字，亦可通过 $refs 调用此方法 | function |              |
+| text                | 调用 done( true )  之后显示的文字                            | string   | 没有更多数据 |
+| distance            | 提前触发上拉加载的距离                                       | number   | 0            |
 | getPosition         | 返回当前垂直滚动条的距离，通过 $refs 调用此方法              | function |              |
 | scrollto(y,ms)      | ms 时间内滚动条滚动到 y，通过 $refs 调用此方法               | function | y=0          |
 
-
+<br>
 
 ### jc-mask
 
 带过度的遮罩弹出层
 
 ```
-<jc-mask :opacity="0.6" :maskState="maskState" :flex="true" @close="maskState=false">
+<jc-mask 
+        :opacity="0.6" 
+        :maskState="maskState" 
+        :flex="true" 
+        @close="maskState=false">
 	<div>插槽内容</div>
 </jc-mask>
 ```
@@ -98,11 +133,11 @@ this.$jcConfirm.show ({
 | flex        | 插槽内容水平垂直居中，并且带有出入场过度 | boolean | false  |
 | close       | 点击遮罩的触发的事件                     | 事件    |        |
 
-
+<br>
 
 ### jc-tab
 
-tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
+ tab 栏组件还是比较常见的，这里的 tab 栏主要是结合 jc-page 组件使用。
 
 ```
 <jc-tab v-model="tabIndex">
@@ -114,7 +149,7 @@ tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
 </jc-tab>
 ```
 
-| 参数          | 说明                                 | 类型             | 默认值    |
+| 属性          | 说明                                 | 类型             | 默认值    |
 | ------------- | ------------------------------------ | ---------------- | --------- |
 | * v-model     | 当前选中的 tab-item 下标            | number           |          |
 | bar           | 是否显示 bar 及位置 ‘top’ / 'bottom' | boolean / string | 'bottom'  |
@@ -123,10 +158,10 @@ tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
 | tabClass      | tab 栏的 class 类名                  | string           |           |
 | itemClass     | tab-item 的 class 类名               | string           |           |
 | activeClass   | 当前选中的 class 类名                | string           |           |
-| **tab-item 参数** |                                      |                  |           |
+| **tab-item** |                                      |                  |           |
 | itemClick     | 点击 tab-item 触发               | 事件             |           |
 
-
+<br>
 
 ### jc-page
 
@@ -138,6 +173,24 @@ tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
 
 需要在默认插槽上左右滑动才会切换页面，所以默认插槽的高度不宜过低
 
+如何使用：
+
+```vue
+<jc-page 
+		v-model="tabIndex"
+        :pageLength="4" 
+        @nextPage="nextPage" 
+        @previousPage="previousPage">
+    <div slot="left" class="page-left"></div>
+    <div class="content">
+    	<div>当前页面是{{pageIndex}}</div>
+    </div>
+    <div slot="right" class="page-right"></div>
+</jc-page>
+```
+
+组合使用：
+
 ```vue
 <template>
 	<div>
@@ -148,19 +201,20 @@ tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
                     :tabClass="'my-tab'" 
                     :activeClass="'my-active'">
 				<jc-tab-item >使用说明</jc-tab-item>
-				<jc-tab-item >参数 API</jc-tab-item>
-				<jc-tab-item >代码</jc-tab-item>
+				<jc-tab-item >如何使用</jc-tab-item>
+				<jc-tab-item >组合使用</jc-tab-item>
+				<jc-tab-item >API</jc-tab-item>
 			</jc-tab>
 		</div>
 		<div>
 			<jc-page 
-                     :pageLength="3" 
+                     v-model="tabIndex"
+                     :pageLength="4" 
                      @nextPage="nextPage" 
-                     @previousPage="previousPage" 
-                     v-model="tabIndex">
+                     @previousPage="previousPage" >
 				<div slot="left" class="page-left"></div>
 				<div class="content">
-                    <div>当前页面是{{pageIndex}}</div>
+					<div>当前页面是{{pageIndex}}</div>
 				</div>
 				<div slot="right" class="page-right"></div>
 			</jc-page>
@@ -170,26 +224,26 @@ tab 栏，tab-item 超过 （100/minWidth） 项出现滚动条
 
 <script>
 export default {
-    data(){
-        return {
-            tabIndex:0,
-            pageIndex:0,
-        }
-    },
-    methods:{
-        nextPage(done){
-            setTimeout(()=>{
-                done()
-                this.pageIndex = this.tabIndex
-            },500)
-        },
-        previousPage(done){
-            setTimeout(()=>{
-                done()
-                this.pageIndex = this.tabIndex
-            },500)
-        }
-    }
+	data(){
+		return {
+			tabIndex:0,
+			pageIndex:0,
+		}
+	},
+	methods:{
+		nextPage(done){
+			setTimeout(()=>{
+				done()
+				this.pageIndex = this.tabIndex
+			},500)
+		},
+		previousPage(done){
+			setTimeout(()=>{
+				done()
+				this.pageIndex = this.tabIndex
+			},500)
+		}
+	}
 }
 </script>
 
@@ -214,7 +268,7 @@ export default {
 
 ```
 
-
+<br>
 
 | 参数               | 说明                           | 类型     | 默认值 |
 | ------------------ | ------------------------------ | -------- | ------ |
@@ -226,5 +280,87 @@ export default {
 | previousPage(done) | 显示左页面时触发               | 事件     |        |
 | done               | 调用 done() 可以跳转到中间页面 | function |        |
 
+<br>
 
+### jc-toast
+
+组件库中需要使用 toast ， 顺便做了一个，和其他组件库的 toast 没多大区别
+
+如何使用
+
+```javascript
+this.$jcToast({
+    text:'这里是提示文字',
+    icon:'success',
+    time: 1000
+})
+```
+
+| 属性 | 说明                                       | 类型   | 默认值 |
+| ---- | ------------------------------------------ | ------ | ------ |
+| text | 提示文字                                   | string |        |
+| icon | 图标，可选值：'success'，'fail'，'warning' | string |        |
+| time | 显示时长                                   | number | 2000   |
+
+<br>
+
+### 图片懒加载
+
+此功能函数特色：
+
+1. 由于图片懒加载需要监听滚动条事件，而滚动条事件触发非常频繁，因此函数内部做了众多优化；
+2. 无论滚动条是 html 的、 body 的，或者某个容器的，都能通过此函数实现懒加载功能；
+3. 使用简单：只需调用 $lazyloadFn(<传入滚动条元素节点>) 即可实现。
+
+<br>
+
+### 使用方法
+
+1. 在 index.html 的 script 标签中添加下面的代码，把 $lazyloadFn 添加为 window 的方法；
+2. img 标签的 data-src 属性添加真实图片地址，src 属性添加 loading 图片地址；
+3. 图片地址请求回来并且添加到 img 的 data-src 之后调用 $lazyloadFn(<传入滚动条元素节点>);
+4. 滚动条是 html 或者 body 时，<传入滚动条元素节点> 为 window，如果图片在某个容器里滚动的，则传入这个容器节点；
+5. 注意如果传入滚动条元素节点不是 window 则滚动条元素须开启定位，且滚动条元素到 img 标签之间的元素不能开启定位和 transform。
+
+<br>
+
+```javascript
+window.$lazyloadFn = function (el) {
+  if(el === undefined) return
+  let index = 0
+  let scrolly = el.scrollTop || el.scrollY
+  let oldScroll = 0
+  let timeId
+  el.addEventListener('scroll',lazyload)
+  forFn()
+  function lazyload(){
+    scrolly = el.scrollTop || el.scrollY
+    if(scrolly < oldScroll) return
+    if(scrolly - oldScroll > 300) forFn()
+    clearInterval(timeId)
+    timeId = setTimeout(forFn,200)
+  }
+  function forFn() {
+    let imgs = document.querySelectorAll('[data-src]')
+    if(imgs.length === 0) return
+    if(scrolly > oldScroll) oldScroll = scrolly
+    if(index === imgs.length) el.removeEventListener('scroll',lazyload)
+    if(el === window){
+      for (let i=index,length=imgs.length; i<length; i++){
+        if(imgs[i].getBoundingClientRect().top - window.innerHeight < 0){
+          imgs[i].src = imgs[i].getAttribute("data-src")
+          index++
+        }else break
+      }
+    }else {
+      for (let i=index,length=imgs.length; i<length; i++){
+        if(imgs[i].offsetTop <= el.clientHeight + el.scrollTop){
+          imgs[i].src = imgs[i].getAttribute("data-src")
+          index++
+        }else break
+      }
+    }
+  }
+}
+```
 

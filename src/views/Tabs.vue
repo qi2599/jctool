@@ -35,7 +35,7 @@
 			<jc-tab-item >西瓜</jc-tab-item>
 			<jc-tab-item >火龙果</jc-tab-item>
 		</jc-tab>
-		<titler>使用方法</titler>
+		<titler>如何使用</titler>
 		<div>
 			<pre class="hljs xml"><code class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">jc-tab</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"tabIndex"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">jc-tab-item</span>&gt;</span>全部订单<span class="hljs-tag">&lt;/<span class="hljs-name">jc-tab-item</span>&gt;</span>
@@ -127,7 +127,10 @@
 				tabIndex3:0,
 				tabIndex4:0,
 			}
-		}
+		},
+    mounted(){
+      window.scrollTo(0,0)
+    },
   }
 </script>
 

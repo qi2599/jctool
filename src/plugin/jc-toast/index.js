@@ -9,9 +9,10 @@ export default {
     document.body.appendChild(vm.$el)
     let timeId
     let time2
-    let showToast = function (text,time=2000){
+    let showToast = function ({text,time=2000,icon}){
       vm.text = text
       vm.isShow = true
+      vm.icon = icon ? icon:''
       setTimeout(()=>{
         vm.scale = 1
         vm.opacity = 1

@@ -3,7 +3,10 @@
 		class="jc-toast"
 		v-show="isShow"
 		:style="`transform: scale(${scale});opacity:${opacity};`">
-		<span class="text" v-html="text"></span>
+		<div class="jc-inner">
+			<div class="iconfont" v-show="icon" v-html="iconfont"></div>
+			<div v-html="text"></div>
+		</div>
 	</div>
 </template>
 
@@ -15,7 +18,18 @@
 				text: '',
         scale: 1.2,
         opacity: 0,
+				icon: ''
 			}
+		},
+		computed:{
+      iconfont(){
+        switch (this.icon) {
+					case 'success': return '&#xe62e;'
+					case 'fail': return  '&#xe6d7;'
+					case 'warning': return '&#xe600;'
+					default: return ''
+				}
+      }
 		}
   }
 </script>
@@ -31,11 +45,16 @@
 		text-align: center;
 		transition: transform 0.2s, opacity 0.2s;
 	}
-	.jc-toast .text {
-		padding: 10px 15px;
+	.jc-toast .jc-inner {
+		display: inline-block;
+		padding: 12px 15px;
 		border-radius: 6px;
-		line-height: 40px;
+		letter-spacing: 1px;
 		color: white;
 		background-color: rgba(0, 0, 0, 0.7);
+	}
+	.jc-toast .jc-inner .iconfont{
+		font-size: 40px;
+		padding-bottom: 15px;
 	}
 </style>

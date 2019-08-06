@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   publicPath: './',
+  outputDir: 'joce',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',

@@ -4,13 +4,19 @@
       <img src="../../public/logo.svg">
     </div>
     <div class="para">
-      <p style="text-indent:2em;">joce-ui 为个人组件库，主要是因为网络上未发现有相似的组件，或者不能满足需求进而开发的一个 vue 组件库，所以 ”实用“ 和 ”唯一“ 是此组件库的特点。</p>
+      <p style="text-indent:2em;">joce-ui 为个人组件库，主要是因为网络上未发现有相似的组件，或者不能满足需求进而开发的一套 vue 组件库，所以“实用” 和 “唯一” 是此组件库的特点。</p>
     </div>
     <div class="menu">
       <ul>
         <router-link to="/howUse">
           <li class="my-1px-b">
             如何安装
+            <i class="iconfont icon-you"></i>
+          </li>
+        </router-link>
+        <router-link to="/notice">
+          <li class="my-1px-b">
+            公告栏（jc-notice）
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>
@@ -47,6 +53,12 @@
         <router-link to="/lazyload">
           <li class="my-1px-b">
             图片懒加载
+            <i class="iconfont icon-you"></i>
+          </li>
+        </router-link>
+        <router-link to="/toast">
+          <li class="my-1px-b">
+            轻提示（jc-toast）
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>

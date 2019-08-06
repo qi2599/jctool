@@ -73,9 +73,6 @@
                 <span class="hljs-keyword">this</span>.pageIndex = <span class="hljs-keyword">this</span>.tabIndex
             },<span class="hljs-number">500</span>)
         }
-    },
-    <span class="hljs-attr">components</span>:{
-        [content.name]: content
     }
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>

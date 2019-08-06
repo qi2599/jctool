@@ -8,6 +8,8 @@ import tabs from './views/Tabs'
 import page from './views/Page'
 import lazyload from './views/Lazyload'
 import howUse from './views/HowUse'
+import notice from './views/Notice'
+import toast from './views/Toast'
 
 Vue.use(Router)
 
@@ -21,5 +23,7 @@ export default new Router({
     { path: '/page', name: 'page', component: page},
     { path: '/lazyload', name: 'lazyload', component: lazyload},
     { path: '/howUse', name: 'howUse', component: howUse},
+    { path: '/notice', name: 'notice', component: notice},
+    { path: '/toast', name: 'toast', component: toast},
   ]
 })

@@ -73,10 +73,10 @@ export default {
       this.$jcConfirm.show({
 				text:'这里是提示文字',
         onConfirm: () => {
-          this.$jcToast('点击了确定')
+          this.$jcToast({text:'点击了确定'})
         },
         onCancel: () => {
-          this.$jcToast('点击了取消')
+          this.$jcToast({text:'点击了取消'})
         }
 			})
 		},
@@ -86,14 +86,17 @@ export default {
         confirmText:'要的',
         cancelText:'不要',
         onConfirm: () => {
-          this.$jcToast('点击了要的')
+          this.$jcToast({text:'点击了要的'})
         },
         onCancel: () => {
-          this.$jcToast('点击了不要')
+          this.$jcToast({text:'点击了不要'})
         }
       })
     }
 	},
+  mounted(){
+    window.scrollTo(0,0)
+  },
 	name: "Confirm"
   }
 </script>

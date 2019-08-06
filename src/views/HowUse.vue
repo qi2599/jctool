@@ -32,6 +32,9 @@ Vue.use(confirm)
 
 <script>
   export default {
+    mounted(){
+      window.scrollTo(0,0)
+		},
     name: "HowUse"
   }
 </script>

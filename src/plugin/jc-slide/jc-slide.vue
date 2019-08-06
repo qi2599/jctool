@@ -121,8 +121,9 @@
       infinite(){
         let inf = this.$refs.inf_wrap
         inf.addEventListener('scroll', ()=>{
+          if (!this.flag) return
           if(inf.scrollHeight-inf.offsetHeight <= inf.scrollTop+this.distance) {
-            if (this.flag) this.on_infinite(this.done)
+            this.on_infinite(this.done)
             this.flag = false
           }
         })

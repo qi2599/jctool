@@ -102,19 +102,22 @@ export default {
 	methods:{
 		refresh(reset){
 			setTimeout(()=>{
-        this.$jcToast('刷新成功')
+        this.$jcToast({text:'刷新成功',icon:'success'})
 				this.length = 20
         reset()
 			},1000)
 		},
     infinite(done){
-      this.$jcToast('触发上拉加载')
+      this.$jcToast({text:'触发上拉加载'})
 			setTimeout(()=>{
         this.length += 20
         done()
 			},1000)
 		}
 	},
+  mounted(){
+    window.scrollTo(0,0)
+  },
 	name: "Slide"
 }
 </script>
