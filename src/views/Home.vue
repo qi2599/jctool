@@ -4,13 +4,19 @@
       <img src="../../public/logo.svg">
     </div>
     <div class="para">
-      <p style="text-indent:2em;">joce-ui 为个人组件库，主要是因为网络上未发现有相似的组件，或者不能满足需求进而开发的一套 vue 组件库，所以“实用” 和 “唯一” 是此组件库的特点。</p>
+      <p style="text-indent:2em;">一套实用、精致的个人组件库，组件以封装功能为主，以使用简单、灵活为设计理念。</p>
     </div>
     <div class="menu">
       <ul>
         <router-link to="/howUse">
           <li class="my-1px-b">
             如何安装
+            <i class="iconfont icon-you"></i>
+          </li>
+        </router-link>
+        <router-link to="/banner">
+          <li class="my-1px-b">
+            图片轮播（jc-banner）
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>
@@ -32,9 +38,9 @@
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>
-        <router-link to="/mask">
+        <router-link to="/dialog">
           <li class="my-1px-b">
-            遮罩弹出层（jc-mask）
+            对话框（jc-dialog）
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>

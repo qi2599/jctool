@@ -43,7 +43,7 @@
 <style scoped>
   #confirm {
     position: fixed;
-    z-index: 5;
+    z-index: 9999;
     top: 0;
     width: 100%;
     height: 100%;

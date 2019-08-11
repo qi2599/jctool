@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+/joce
 
 # local env files
 .env.local
@@ -19,3 +19,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+/joce.zip

@@ -1,22 +1,22 @@
 <template>
 	<div>
-		<navbar :title="'遮罩弹出层'"></navbar>
-		<jc-mask :opacity="0.6" :maskState="maskState" :flex="true" @close="maskState=false">
+		<navbar :title="'对话框'"></navbar>
+		<jc-dialog :opacity="0.6" :dialogState="dialogState" :flex="true" @close="dialogState=false">
 			<div class="box">
 				<img src="../../public/logo.svg">
 				自定义弹出内容
 			</div>
-		</jc-mask>
-		<mybtn @click.native="showMask">弹出遮罩</mybtn>
-		<titler>使用方法</titler>
+		</jc-dialog>
+		<mybtn @click.native="showDialog">弹出遮罩</mybtn>
+		<titler>如何使用</titler>
 		<div>
-			<pre class="hljs xml"><code class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">jc-mask</span>
+			<pre class="hljs xml"><code class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">jc-dialog</span>
         <span class="hljs-attr">:opacity</span>=<span class="hljs-string">"0.6"</span>
-        <span class="hljs-attr">:maskState</span>=<span class="hljs-string">"maskState"</span>
+        <span class="hljs-attr">:dialogState</span>=<span class="hljs-string">"dialogState"</span>
         <span class="hljs-attr">:flex</span>=<span class="hljs-string">"true"</span>
-        @<span class="hljs-attr">close</span>=<span class="hljs-string">"maskState=false"</span>&gt;</span>
+        @<span class="hljs-attr">close</span>=<span class="hljs-string">"dialogState=false"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>插槽内容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">jc-mask</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">jc-dialog</span>&gt;</span>
 </code></pre>
 		</div>
 		<titler>参数 API</titler>
@@ -32,8 +32,8 @@
 				</thead>
 				<tbody>
 				<tr>
-					<td>* maskState</td>
-					<td>是否显示遮罩</td>
+					<td>* dialogState</td>
+					<td>弹出对话框</td>
 					<td>boolean</td>
 					<td></td>
 				</tr>
@@ -65,12 +65,12 @@
   export default {
     data(){
       return{
-        maskState: false
+        dialogState: false
 			}
 		},
 		methods:{
-      showMask(){
-        this.maskState=true
+      showDialog(){
+        this.dialogState=true
 			}
 		},
     mounted(){

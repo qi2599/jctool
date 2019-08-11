@@ -78,14 +78,15 @@
       // 下拉刷新
       start(ev){
         if(this.$refs.inf_wrap.scrollTop>0) return
-        if(this.moveState !== 0) return
+        if(this.moveState === 2) return
         ev = ev || event
         this.startY = ev.targetTouches[0].clientY
         this.duration = 0
+        this.moveState = 0
       },
       move(ev){
-        if(this.moveState === 2) return
         if(this.$refs.inf_wrap.scrollTop>0) return
+        if(this.moveState === 2) return
         ev = ev || event
         let scale = 1
         let touch = ev.changedTouches[0]
@@ -93,15 +94,16 @@
         let dis = nowY-this.startY
         if(dis<0) return;
         if(ev.cancelable) ev.preventDefault()
-        if(dis>=40) scale *= 150/(110+dis)
+        if(dis>=50) scale *= 150/(100+dis)
         this.moveDistance = dis*scale/2
-        if(this.moveDistance>40) this.moveState = 1
+        if(this.moveDistance>50) this.moveState = 1
+        else this.moveState = 0
       },
       end(){
         if(this.$refs.inf_wrap.scrollTop>0) return
         if(this.moveState === 2) return
         this.duration = 500
-        if(this.moveDistance<40){
+        if(this.moveDistance<50){
           this.moveDistance=0
           return
         }else{

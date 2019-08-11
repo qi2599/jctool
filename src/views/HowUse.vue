@@ -14,7 +14,7 @@ Vue.use(plugin)
 		</div>
 		<titler>按需引入</titler>
 		<div>
-			<pre class="hljs javascript"><code class="javascript"><span class="hljs-keyword">import</span> confirm <span class="hljs-keyword">from</span> <span class="hljs-string">'./plugin/confirm'</span>
+			<pre class="hljs javascript"><code class="javascript"><span class="hljs-keyword">import</span> confirm <span class="hljs-keyword">from</span> <span class="hljs-string">'./plugin/jc-confirm'</span>
 Vue.use(confirm)
 </code></pre>
 		</div>

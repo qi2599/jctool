@@ -1,6 +1,6 @@
 ### 简介
 
-joce-ui 为个人组件库，主要是因为网络上未发现有相似的组件，或者不能满足作者的需求进而开发的一个 vue 组件库，所以 ”实用“ 和 ”唯一“ 是此组件库的特点。
+一套实用、精致的个人组件库，组件以封装功能为主，以使用简单、灵活为设计理念。
 
 组件演示连接 <http://test.gkshwap.com/joce>
 
@@ -37,6 +37,30 @@ Vue.use 之后会根据组件的使用，注册全局组件或往 Vue 的原型�
 带 * 的属性为必须属性
 
 组件自定义的类名样式请不要写在含有 scoped 属性的 style 标签中，否则可能造成样式不生效
+
+<br>
+
+### jc-banner
+
+图片轮播
+
+```vue
+<!-- template -->
+<jc-banner :imgs="imgs" :radius="6"></jc-banner>
+
+// imgs 数据结构
+imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
+```
+
+| 属性             | 说明                                        | 类型    | 默认值    |
+| ---------------- | ------------------------------------------- | ------- | --------- |
+| *imgs            | 图片路径                                    | array   |           |
+| radius           | 图片圆角                                    | number  | 0         |
+| auto             | 自动播放间隔时间，0为禁用自动播放，单位：秒 | number  | 3         |
+| interval         | 过度时间，单位：毫秒                        | number  | 500       |
+| dots             | 是否显示提示点                              | boolean | true      |
+| activeColor      | 当前提示点颜色                              | string  | '#3dd3ff' |
+| clickItem(index) | 点击图片触发，index点击的图片下标           | 事件    |           |
 
 <br>
 
@@ -112,26 +136,26 @@ this.$jcConfirm.show ({
 
 <br>
 
-### jc-mask
+### jc-dialog
 
 带过度的遮罩弹出层
 
 ```
 <jc-mask 
         :opacity="0.6" 
-        :maskState="maskState" 
+        :dialogState="dialogState" 
         :flex="true" 
-        @close="maskState=false">
+        @close="dialogState=false">
 	<div>插槽内容</div>
 </jc-mask>
 ```
 
-| 参数        | 说明                                     | 类型    | 默认值 |
-| ----------- | ---------------------------------------- | ------- | ------ |
-| * maskState | 是否显示遮罩                             | boolean |        |
-| opacity     | 遮罩不透明度                             | number  | 0.5    |
-| flex        | 插槽内容水平垂直居中，并且带有出入场过度 | boolean | false  |
-| close       | 点击遮罩的触发的事件                     | 事件    |        |
+| 参数          | 说明                                     | 类型    | 默认值 |
+| ------------- | ---------------------------------------- | ------- | ------ |
+| * dialogState | 弹出对话框                               | boolean |        |
+| opacity       | 遮罩不透明度                             | number  | 0.5    |
+| flex          | 插槽内容水平垂直居中，并且带有出入场过度 | boolean | false  |
+| close         | 点击遮罩的触发的事件                     | 事件    |        |
 
 <br>
 
