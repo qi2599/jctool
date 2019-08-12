@@ -2,7 +2,7 @@
 	<div>
 		<navbar :title="'图片轮播'"></navbar>
 		<div class="banner">
-			<jc-banner :imgs="imgs" :radius="6" :interval="1000" @clickItem="clickItem"></jc-banner>
+			<jc-banner :imgs="imgs" :radius="6" :duration="1000" @clickItem="clickItem"></jc-banner>
 		</div>
 		<titler :top="0">如何使用</titler>
 		<div>
@@ -44,7 +44,7 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 					<td>3</td>
 				</tr>
 				<tr>
-					<td>interval</td>
+					<td>duration</td>
 					<td>过度时间，单位：毫秒</td>
 					<td>number</td>
 					<td>500</td>
@@ -87,13 +87,13 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 		},
 		mounted(){
       window.scrollTo(0,0)
-      this.imgs = [
-        'http://139.159.204.137/image/banner/1.816bad4.jpg',
-        'http://139.159.204.137/image/banner/2.226f83b.jpg',
-        'http://139.159.204.137/image/banner/3.bde4650.jpg',
-        'http://139.159.204.137/image/banner/4.23a03b8.jpg',
-        'http://139.159.204.137/image/banner/5.5494006.jpg'
-      ]
+			this.imgs = [
+				'http://139.159.204.137/image/banner/1.816bad4.jpg',
+				'http://139.159.204.137/image/banner/2.226f83b.jpg',
+				'http://139.159.204.137/image/banner/3.bde4650.jpg',
+				'http://139.159.204.137/image/banner/4.23a03b8.jpg',
+				'http://139.159.204.137/image/banner/5.5494006.jpg'
+			]
 		},
 		name: "Banner"
 	}

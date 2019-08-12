@@ -57,7 +57,7 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 | *imgs            | 图片路径                                    | array   |           |
 | radius           | 图片圆角                                    | number  | 0         |
 | auto             | 自动播放间隔时间，0为禁用自动播放，单位：秒 | number  | 3         |
-| interval         | 过度时间，单位：毫秒                        | number  | 500       |
+| duration         | 过度时间，单位：毫秒                        | number  | 500       |
 | dots             | 是否显示提示点                              | boolean | true      |
 | activeColor      | 当前提示点颜色                              | string  | '#3dd3ff' |
 | clickItem(index) | 点击图片触发，index点击的图片下标           | 事件    |           |
@@ -81,7 +81,7 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 
 <br>
 
-### confirm
+### jc-confirm
 
 ios风格 “确定、取消” 对话框
 
@@ -113,7 +113,7 @@ this.$jcConfirm.show ({
 
 使用上拉加载功能时，此组件的高度不能由插槽撑开，请使用指定高度的div包裹此组件。
 
-```
+```html
 <jc-slide 
         :on_refresh="refresh" 
         :on_infinite="infinite" 
@@ -136,26 +136,22 @@ this.$jcConfirm.show ({
 
 <br>
 
-### jc-dialog
+### jc-popup
 
-带过度的遮罩弹出层
+弹出层
 
-```
-<jc-mask 
-        :opacity="0.6" 
-        :dialogState="dialogState" 
-        :flex="true" 
-        @close="dialogState=false">
-	<div>插槽内容</div>
-</jc-mask>
+```html
+<jc-popup :show="popupState" @onOverlay="popupState = false">
+    <div>这里是插槽内容</div>
+</jc-popup>
 ```
 
-| 参数          | 说明                                     | 类型    | 默认值 |
-| ------------- | ---------------------------------------- | ------- | ------ |
-| * dialogState | 弹出对话框                               | boolean |        |
-| opacity       | 遮罩不透明度                             | number  | 0.5    |
-| flex          | 插槽内容水平垂直居中，并且带有出入场过度 | boolean | false  |
-| close         | 点击遮罩的触发的事件                     | 事件    |        |
+| 属性      | 说明                                               | 类型    | 默认值   |
+| --------- | -------------------------------------------------- | ------- | -------- |
+| * show    | 是否显示此组件                                     | boolean |          |
+| opacity   | 遮罩不透明度                                       | number  | 0.5      |
+| position  | 插槽内容位置，可选值：left/right/top/bottom/middle | string  | 'middle' |
+| onOverlay | 点击遮罩触发                                       | 事件    |          |
 
 <br>
 
@@ -163,7 +159,7 @@ this.$jcConfirm.show ({
 
  tab 栏组件还是比较常见的，这里的 tab 栏主要是结合 jc-page 组件使用。
 
-```
+```vue
 <jc-tab v-model="tabIndex">
     <jc-tab-item>全部订单</jc-tab-item>
     <jc-tab-item>提交订单</jc-tab-item>

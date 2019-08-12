@@ -38,9 +38,9 @@
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>
-        <router-link to="/dialog">
+        <router-link to="/popup">
           <li class="my-1px-b">
-            对话框（jc-dialog）
+            弹出层（jc-popup）
             <i class="iconfont icon-you"></i>
           </li>
         </router-link>
@@ -81,7 +81,16 @@ export default {
       tabIndex:0
     }
   },
-  
+  mounted() {
+    let mobileArry = ["iPhone", "iPad", "Android", "Windows Phone", "BB10; Touch", "BB10; Touch", "PlayBook", "Nokia"];
+    let ua = navigator.userAgent;
+    let res=mobileArry.filter(function(arr) {
+      return ua.indexOf(arr) > 0;
+    });
+    if(res.length === 0){
+      this.$jcToast({text:'请切换至移动端浏览此网站',time:10000,icon:'warning'})
+    }
+  }
 }
 </script>
 

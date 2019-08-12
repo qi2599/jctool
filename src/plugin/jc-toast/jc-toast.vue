@@ -54,7 +54,7 @@
 		background-color: rgba(0, 0, 0, 0.7);
 	}
 	.jc-toast .jc-inner .iconfont{
-		font-size: 40px;
+		font-size: 200%;
 		padding-bottom: 15px;
 	}
 </style>

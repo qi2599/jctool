@@ -1,6 +1,6 @@
 import jcConfirm from './jc-confirm'
 import jcSlide from './jc-slide'
-import jcDialog from './jc-dialog'
+import jcPopup from './jc-popup'
 import jcPage from './jc-page'
 import jcTab from './jc-tab'
 import jcToast from './jc-toast'
@@ -10,7 +10,7 @@ export default {
   install(Vue){
     Vue.use(jcConfirm)
     Vue.use(jcSlide)
-    Vue.use(jcDialog)
+    Vue.use(jcPopup)
     Vue.use(jcPage)
     Vue.use(jcTab)
     Vue.use(jcToast)

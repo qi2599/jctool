@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import confirm from './views/Confirm'
 import slide from './views/Slide'
-import dialog from './views/Dialog'
+import popup from './views/Popup'
 import tabs from './views/Tabs'
 import page from './views/Page'
 import lazyload from './views/Lazyload'
@@ -19,7 +19,7 @@ export default new Router({
     { path: '/', name: 'home', component: Home},
     { path: '/confirm', name: 'confirm', component: confirm},
     { path: '/slide', name: 'slide', component: slide},
-    { path: '/dialog', name: 'dialog', component: dialog},
+    { path: '/popup', name: 'popup', component: popup},
     { path: '/tabs', name: 'tabs', component: tabs},
     { path: '/page', name: 'page', component: page},
     { path: '/lazyload', name: 'lazyload', component: lazyload},
