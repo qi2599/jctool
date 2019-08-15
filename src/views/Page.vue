@@ -44,6 +44,9 @@ export default {
 			},500)
 		}
 	},
+	mounted(){
+		window.scrollTo(0,0)
+	},
 	components:{
 		[content.name]: content
 	}

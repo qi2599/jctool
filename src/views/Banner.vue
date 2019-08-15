@@ -2,7 +2,7 @@
 	<div>
 		<navbar :title="'图片轮播'"></navbar>
 		<div class="banner">
-			<jc-banner :imgs="imgs" :radius="6" :duration="1000" @clickItem="clickItem"></jc-banner>
+			<jc-banner :imgs="imgs" :radius="6" :duration="1000" @clickItem="clickItem" @imgLoad="imgLoad"></jc-banner>
 		</div>
 		<titler :top="0">如何使用</titler>
 		<div>
@@ -74,6 +74,7 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 </template>
 
 <script>
+	import {getBanner} from '../api'
 	export default {
 		data(){
 			return {
@@ -83,17 +84,25 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 		methods:{
 			clickItem(index){
 				console.log(index);
-      }
+      },
+			imgLoad(){
+				this.$jcToast({time:0})
+			}
+		},
+		created(){
+			this.$jcToast({text: '加载中...',icon: 'loadding'})
+			getBanner().then(res => {
+				if(res.success){
+					let newImgs = []
+					res.result.forEach(item => {
+						newImgs.push(item.tab_image_url)
+					})
+					this.imgs = newImgs
+				}
+			})
 		},
 		mounted(){
       window.scrollTo(0,0)
-			this.imgs = [
-				'http://139.159.204.137/image/banner/1.816bad4.jpg',
-				'http://139.159.204.137/image/banner/2.226f83b.jpg',
-				'http://139.159.204.137/image/banner/3.bde4650.jpg',
-				'http://139.159.204.137/image/banner/4.23a03b8.jpg',
-				'http://139.159.204.137/image/banner/5.5494006.jpg'
-			]
 		},
 		name: "Banner"
 	}

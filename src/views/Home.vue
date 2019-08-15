@@ -78,18 +78,31 @@
 export default {
   data(){
     return{
-      tabIndex:0
+      tabIndex:0,
+      sele: ''
+    }
+  },
+  methods:{
+    isMobile(){
+      let mobileArry = ["iPhone", "iPad", "iPod", "Android", "UCWEB"]
+      let ua = navigator.userAgent
+      let res=mobileArry.filter(function(arr) {
+        return ua.indexOf(arr) > 0
+      })
+      if(res.length === 0){
+        this.$jcToast({text:'请切换至移动端浏览此网站',time:10000,icon:'warning'})
+      }else {
+        this.$jcToast({time:0})
+        window.removeEventListener('resize',this.isMobile)
+      }
     }
   },
   mounted() {
-    let mobileArry = ["iPhone", "iPad", "Android", "Windows Phone", "BB10; Touch", "BB10; Touch", "PlayBook", "Nokia"];
-    let ua = navigator.userAgent;
-    let res=mobileArry.filter(function(arr) {
-      return ua.indexOf(arr) > 0;
-    });
-    if(res.length === 0){
-      this.$jcToast({text:'请切换至移动端浏览此网站',time:10000,icon:'warning'})
-    }
+    this.isMobile()
+    window.addEventListener('resize',this.isMobile)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize',this.isMobile)
   }
 }
 </script>

@@ -33,13 +33,13 @@
 			<pre class="hljs javascript"><code class="javascript"><span class="hljs-built_in">window</span>.$lazyloadFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el</span>) </span>{
   <span class="hljs-keyword">if</span>(el === <span class="hljs-literal">undefined</span>) <span class="hljs-keyword">return</span>
   <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">let</span> scrolly = el.scrollTop || el.scrollY
+  <span class="hljs-keyword">let</span> scrolly = el.scrollTop || el.pageYOffset || 0
   <span class="hljs-keyword">let</span> oldScroll = <span class="hljs-number">0</span>
   <span class="hljs-keyword">let</span> timeId
   el.addEventListener(<span class="hljs-string">'scroll'</span>,lazyload)
   forFn()
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lazyload</span>(<span class="hljs-params"></span>)</span>{
-    scrolly = el.scrollTop || el.scrollY
+    scrolly = el.scrollTop || el.pageYOffset || 0
     <span class="hljs-keyword">if</span>(scrolly &lt; oldScroll) <span class="hljs-keyword">return</span>
     <span class="hljs-keyword">if</span>(scrolly - oldScroll &gt; <span class="hljs-number">300</span>) forFn()
     clearInterval(timeId)

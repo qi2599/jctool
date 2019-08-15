@@ -41,21 +41,24 @@ function htmlFont(){
 window.$lazyloadFn = function (el) {
   if(el === undefined) return
   let index = 0
-  let scrolly = el.scrollTop || el.scrollY
+  let scrolly = el.scrollTop || el.pageYOffset || 0
   let oldScroll = 0
   let timeId
   el.addEventListener('scroll',lazyload)
   forFn()
   function lazyload(){
-    scrolly = el.scrollTop || el.scrollY
-    if(scrolly < oldScroll) return
+    scrolly = el.scrollTop || el.pageYOffset || 0
+    if(scrolly < oldScroll && scrolly > 5) return
     if(scrolly - oldScroll > 300) forFn()
     clearInterval(timeId)
     timeId = setTimeout(forFn,200)
   }
   function forFn() {
     let imgs = document.querySelectorAll('[data-src]')
-    if(imgs.length === 0) return
+    if(imgs.length === 0){
+      el.removeEventListener('scroll',lazyload)
+      return
+    }
     if(scrolly > oldScroll) oldScroll = scrolly
     if(index === imgs.length) el.removeEventListener('scroll',lazyload)
     if(el === window){

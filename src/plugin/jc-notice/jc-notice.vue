@@ -10,41 +10,35 @@
 </template>
 
 <script>
-  export default {
-    data(){
-      return {
-        wrapWidth: 0,
+	export default {
+		data(){
+			return {
+				wrapWidth: 0,
 				textWidth: 0,
 				duration: 0,
 			}
 		},
 		props:{
-      speed:{
-        type: Number,
+			speed:{
+				type: Number,
 				default: 8
 			},
-      icon:{
-        type: Boolean,
+			icon:{
+				type: Boolean,
 				default: true
 			}
 		},
-		computed:{
-  
-		},
-		methods:{
-  
-		},
 		mounted(){
-      this.wrapWidth = this.$refs.noticeWrap.offsetWidth
-      this.textWidth = this.$refs.textWrap.offsetWidth
+			this.wrapWidth = this.$refs.noticeWrap.offsetWidth
+			this.textWidth = this.$refs.textWrap.offsetWidth
 			if(this.wrapWidth < this.textWidth){
-        this.duration = Math.round(this.textWidth/this.wrapWidth*this.speed)
+				this.duration = Math.round(this.textWidth/this.wrapWidth*this.speed)
 			}else {
-        this.duration = 0
+				this.duration = 0
 			}
-    },
-    name: "jc-notice"
-  }
+		},
+		name: "jc-notice"
+	}
 </script>
 
 <style scoped>

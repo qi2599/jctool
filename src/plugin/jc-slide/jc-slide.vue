@@ -9,7 +9,7 @@
         </div>
         <slot/>
         <div>
-          <p v-if="noLoad" class="no_load" v-html="text"></p>
+          <div v-if="noLoad" class="no_load" v-html="text"></div>
           <img v-else class="inf_img" src="../common/loading.svg">
         </div>
       </div>
@@ -17,7 +17,7 @@
     <div v-if="showState===2">
       <slot/>
       <div>
-        <p v-if="noLoad" class="no_load" v-html="text"></p>
+        <div v-if="noLoad" class="no_load" v-html="text"></div>
         <img v-else class="inf_img" src="../common/loading.svg">
       </div>
     </div>
@@ -141,28 +141,40 @@
         return this.$refs.inf_wrap.scrollTop
       },
       jump(y,ms){
-        let nowPot = this.$refs.inf_wrap.scrollTop
-        let dis = Math.abs(nowPot-y)
+        y = y ? y : 0
+        ms = ms ? ms : 0
+        var node = this.$refs.inf_wrap
+        var nowPot = node.pageYOffset || node.scrollTop || 0
+        var dis = Math.abs(nowPot-y)
+        var timeId
+        node.addEventListener('touchstart',scrollStop)
+        node.addEventListener('mousedown',scrollStop)
+        node.addEventListener('mousewheel',scrollStop)
+        node.addEventListener('DOMMouseScroll',scrollStop)
         if(y>nowPot){
           // 向下滚
-          let timeId = setInterval(() =>{
-            nowPot += dis/(ms/20)
-            if(nowPot >= y){
-              nowPot = y
-              clearInterval(timeId)
-            }
-            this.$refs.inf_wrap.scrollTop = nowPot
-          } ,20)
-        }else {
+          timeId = setInterval(function(){
+            nowPot += dis/(ms/10)
+            if(nowPot >= y) scrollStop()
+            if(node.scrollTop !== undefined) node.scrollTop = nowPot
+            node.scrollTo && node.scrollTo(0,nowPot)
+          },10)
+        }else if(y<nowPot){
           // 向上滚
-          let timeId = setInterval(() =>{
-            nowPot -= dis/(ms/20)
-            if(nowPot <= y){
-              nowPot = y
-              clearInterval(timeId)
-            }
-            this.$refs.inf_wrap.scrollTop = nowPot
-          } ,20)
+          timeId = setInterval(function(){
+            nowPot -= dis/(ms/10)
+            if(nowPot <= y) scrollStop()
+            if(node.scrollTop !== undefined) node.scrollTop = nowPot
+            node.scrollTo && node.scrollTo(0,nowPot)
+          },10)
+        }
+        function scrollStop(){
+          nowPot = y
+          clearInterval(timeId)
+          node.removeEventListener('touchstart',scrollStop)
+          node.removeEventListener('mousedown',scrollStop)
+          node.removeEventListener('mousewheel',scrollStop)
+          node.removeEventListener('DOMMouseScroll',scrollStop)
         }
       },
       scrollto(y=0,ms){
@@ -173,7 +185,7 @@
         }else {
           this.$refs.inf_wrap.scrollTop = y
         }
-      },
+      }
     },
     created(){
       if(typeof this.on_infinite === 'function' && typeof this.on_refresh === 'function') this.showState = 1
@@ -205,13 +217,16 @@
     letter-spacing: 1px;
   }
   .inf_wrap .inf_img {
+    display: block;
+    margin: 0;
+    padding: 0;
     height: 40px;
     width: 100%;
-    text-align: center;
   }
   .inf_wrap .no_load {
     text-align: center;
-    line-height: 40px;
+    padding: 15px 0;
+    font-size: 13px;
     color: #b2b2b2;
     letter-spacing: 1px;
   }

@@ -4,7 +4,7 @@
 		<div class="para"><p>使用上拉加载功能时，此组件的高度不能由插槽撑开，请使用指定高度的div包裹此组件。</p></div>
 		<titler>演示</titler>
 		<div class="slide-wrap">
-			<jc-slide :on_refresh="refresh" :on_infinite="infinite">
+			<jc-slide :on_refresh="refresh" :on_infinite="infinite" ref="slider">
 				<div>
 					<div v-for="item in length">{{item}}</div>
 				</div>
@@ -102,22 +102,22 @@ export default {
 	methods:{
 		refresh(reset){
 			setTimeout(()=>{
-        this.$jcToast({text:'刷新成功',icon:'success'})
+				this.$jcToast({text:'刷新成功',icon:'success'})
 				this.length = 20
-        reset()
+				reset()
 			},1000)
 		},
-    infinite(done){
-      this.$jcToast({text:'触发上拉加载'})
+		infinite(done){
+			this.$jcToast({text:'触发上拉加载'})
 			setTimeout(()=>{
-        this.length += 20
-        done()
+				this.length += 20
+				done()
 			},1000)
 		}
 	},
-  mounted(){
-    window.scrollTo(0,0)
-  },
+	mounted(){
+		window.scrollTo(0,0)
+	},
 	name: "Slide"
 }
 </script>

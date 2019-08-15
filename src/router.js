@@ -16,7 +16,8 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', name: 'home', component: Home},
+    {path:'/', redirect: '/home'},
+    { path: '/home', name: 'home', component: Home},
     { path: '/confirm', name: 'confirm', component: confirm},
     { path: '/slide', name: 'slide', component: slide},
     { path: '/popup', name: 'popup', component: popup},

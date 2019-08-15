@@ -1,21 +1,28 @@
 <template>
-	<div class="jc-banner" @touchstart="start" @touchmove="move" @touchend="end" ref="bannerWrap">
-		<div class="jc-img-box" :style="style">
+	<div
+		class="jc-banner"
+		:style="`padding:${wrapPadding}px 0`"
+		@touchstart="start"
+		@touchmove="move"
+		@touchend="end"
+		ref="bannerWrap">
+		<div class="jc-img-box" :style="style" ref="jcImgBox">
 			<img
 				:src="imgs[imgs.length-1]"
-				:class="{active: active===imgs.length-1 && imgs.length !== 1}"
+				:class="{'jc-active': active===imgs.length-1 && imgs.length !== 1}"
 				:style="leftImg"
 				@click="$emit('clickItem',imgs.length-1)">
 			<img
-				:class="{active:active===index}"
+				:class="{'jc-active':active===index}"
 				:style="imgStyle"
 				v-for="(item,index) in imgs"
 				:src="item"
 				:key="index"
+				@load="getPadding"
 				@click="$emit('clickItem',index)">
 			<img
 				:src="imgs[0]"
-				:class="{active:active===0 && imgs.length !== 1}"
+				:class="{'jc-active':active===0 && imgs.length !== 1}"
 				:style="imgStyle"
 				@click="$emit('clickItem',0)">
 		</div>
@@ -35,6 +42,7 @@
 		data(){
 			return {
 				wrapWidth: 0,
+				wrapPadding: 0,
 				imgWidth: 0,
 				imgBoxWidht: 0,
 				isX: true,
@@ -78,7 +86,7 @@
 			style(){
 				return {
 					transition: `transform ${this.translateDuration}ms`,
-					transform: `translate3d(${this.distance}px,0,0)`,
+					transform: `translate(${this.distance}px,0)`,
 					width: `${this.imgBoxWidht}px`
 				}
 			},
@@ -161,12 +169,22 @@
 			},
 			reset(){
 				this.wrapWidth = this.$refs.bannerWrap.clientWidth
+				setTimeout(()=>{
+					this.wrapPadding = this.$refs.jcImgBox.offsetHeight*0.15/2
+				},50)
 				this.imgWidth = this.wrapWidth * 0.88
 				this.distance = -(this.active * this.imgWidth + this.imgWidth)
 				this.translateDuration = 0
 				this.scaleDuration = this.duration
 				this.imgBoxWidht = (this.imgs.length+2)*this.imgWidth+(this.wrapWidth-this.wrapWidth*0.96)/2
 				if (this.auto !==0 && this.imgs.length > 1) this.autoPlay()
+			},
+			getPadding(ev){
+				ev = ev || event
+				if(this.wrapPadding < 1){
+					this.wrapPadding = ev.target.offsetHeight*0.15/2
+					this.$emit('imgLoad')
+				}
 			}
 		},
 		watch:{
@@ -189,16 +207,25 @@
 	.jc-banner{
 		position: relative;
 		overflow: hidden;
-		padding: 3% 0;
+	}
+	.jc-banner .jc-img-box:after{
+		content: '';
+		display: block;
+		clear: both;
 	}
 	.jc-banner .jc-img-box img{
 		float: left;
+		display: block;
+		margin: 0;
+		padding: 0;
+		min-height: 1px;
 	}
-	.jc-banner .jc-img-box .active{
+	.jc-banner .jc-img-box .jc-active{
 		transform: scale(1.15);
 	}
 	.jc-banner .jc-dots {
 		position: absolute;
+		z-index: 99;
 		bottom: 8px;
 		width: 100%;
 		text-align: center;

@@ -10,13 +10,16 @@ export default {
     let timeId
     let time2
     let showToast = function ({text,time=2000,icon}){
-      vm.text = text
-      vm.isShow = true
-      vm.icon = icon ? icon:''
-      setTimeout(()=>{
-        vm.scale = 1
-        vm.opacity = 1
-      },20)
+      if(time !== 0){
+        vm.text = text
+        vm.isShow = true
+        vm.icon = icon ? icon:''
+        setTimeout(()=>{
+          vm.scale = 1
+          vm.opacity = 1
+        },20)
+        if (icon === 'loadding') return
+      }
       clearInterval(timeId)
       clearInterval(time2)
       timeId = setTimeout(()=>{

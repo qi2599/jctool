@@ -214,6 +214,9 @@
 		z-index: 99;
 	}
 	.jc-page .jc-page-wrap .jc-page-lodding img {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
 		height: 50px;
 		padding: 30px;
 	}

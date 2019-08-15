@@ -1,37 +1,42 @@
 <template>
 	<div
 		class="jc-toast"
-		v-show="isShow"
+		v-show="isShow && text !== undefined"
 		:style="`transform: scale(${scale});opacity:${opacity};`">
 		<div class="jc-inner">
-			<div class="iconfont" v-show="icon" v-html="iconfont"></div>
+			<div v-if="icon === 'loadding'">
+				<img class="jc-loadding" src="../common/loading.svg">
+			</div>
+			<div v-else>
+				<div class="iconfont" v-show="icon" v-html="iconfont"></div>
+			</div>
 			<div v-html="text"></div>
 		</div>
 	</div>
 </template>
 
 <script>
-  export default {
-    data(){
-      return{
-        isShow: false,
+	export default {
+		data(){
+			return{
+				isShow: false,
 				text: '',
-        scale: 1.2,
-        opacity: 0,
+				scale: 1.2,
+				opacity: 0,
 				icon: ''
 			}
 		},
 		computed:{
-      iconfont(){
-        switch (this.icon) {
+			iconfont(){
+				switch (this.icon) {
 					case 'success': return '&#xe62e;'
 					case 'fail': return  '&#xe6d7;'
 					case 'warning': return '&#xe600;'
 					default: return ''
 				}
-      }
+			}
 		}
-  }
+	}
 </script>
 
 <style scoped>
@@ -54,7 +59,13 @@
 		background-color: rgba(0, 0, 0, 0.7);
 	}
 	.jc-toast .jc-inner .iconfont{
-		font-size: 200%;
+		font-size: 250%;
 		padding-bottom: 15px;
+	}
+	.jc-toast .jc-inner .jc-loadding{
+		display: inline-block;
+		margin: 0;
+		padding: 0 5px;
+		width: 60px;
 	}
 </style>

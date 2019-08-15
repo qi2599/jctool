@@ -348,13 +348,13 @@ this.$jcToast({
 window.$lazyloadFn = function (el) {
   if(el === undefined) return
   let index = 0
-  let scrolly = el.scrollTop || el.scrollY
+  let scrolly = el.scrollTop || el.pageYOffset || 0
   let oldScroll = 0
   let timeId
   el.addEventListener('scroll',lazyload)
   forFn()
   function lazyload(){
-    scrolly = el.scrollTop || el.scrollY
+    scrolly = el.scrollTop || el.pageYOffset || 0
     if(scrolly < oldScroll) return
     if(scrolly - oldScroll > 300) forFn()
     clearInterval(timeId)
@@ -367,7 +367,7 @@ window.$lazyloadFn = function (el) {
     if(index === imgs.length) el.removeEventListener('scroll',lazyload)
     if(el === window){
       for (let i=index,length=imgs.length; i<length; i++){
-        if(imgs[i].getBoundingClientRect().top - window.innerHeight < 0){
+        if(imgs[i].getBoundingClientRect().top-window.innerHeight<0){
           imgs[i].src = imgs[i].getAttribute("data-src")
           index++
         }else break
