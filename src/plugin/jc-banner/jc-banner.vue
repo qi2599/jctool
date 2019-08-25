@@ -114,16 +114,14 @@
 				clearInterval(this.timeId)
 				this.translateDuration = 0
 				ev = ev || event
-				let touch = ev.changedTouches[0]
-				this.startPot = {x:touch.clientX, y:touch.clientY}
+				this.startPot = {x:ev.changedTouches[0].clientX, y:ev.changedTouches[0].clientY}
 				this.startElement = this.distance
 			},
 			move(ev){
 				if (!this.isX) return
 				ev = ev || event
-				let touch = ev.changedTouches[0]
 				if (ev.cancelable) ev.preventDefault();
-				let nowPot = { x: touch.clientX - this.startPot.x, y: touch.clientY - this.startPot.y }
+				let nowPot = { x: ev.changedTouches[0].clientX - this.startPot.x, y: ev.changedTouches[0].clientY - this.startPot.y }
 				if(this.isFirst){
 					this.isFirst = false
 					if(Math.abs(nowPot.y)> Math.abs(nowPot.x)){
@@ -137,8 +135,7 @@
 				if (this.auto !==0 && this.imgs.length > 1) this.autoPlay()
 				if (!this.isX) return
 				ev = ev || event
-				let touch = ev.changedTouches[0]
-				let nowPot = touch.clientX - this.startPot.x
+				let nowPot = ev.changedTouches[0].clientX - this.startPot.x
 				if(Math.abs(nowPot)>this.wrapWidth/8){
 					if(nowPot>0) this.active--
 					else if(nowPot<0) this.active++
@@ -196,7 +193,11 @@
 			this.reset()
 			window.addEventListener('resize',this.reset)
 		},
+		activated(){
+			this.reset()
+		},
 		beforeDestroy(){
+			clearInterval(this.timeId)
 			window.removeEventListener('resize',this.reset)
 		},
 		name: "jc-banner"

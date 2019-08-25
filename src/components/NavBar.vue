@@ -27,6 +27,7 @@
 		.head{
 			position: fixed;
 			width: 100%;
+			max-width: 780px;
 			z-index: 9;
 			top: 0;
 			height: 100/@rem;

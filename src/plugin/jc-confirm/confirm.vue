@@ -1,5 +1,5 @@
 <template>
-  <div id="confirm" v-show="isShow" :class="{show_confirm: toggleShow}" @touchstart.self="cloce" @touchmove.prevent>
+  <div id="confirm" v-show="isShow" :class="{show_confirm: toggleShow}" @click.self="cloce" @touchmove.prevent>
     <div class="jc-conwrap" :class="{'show-jc-conwrap': toggleShow}">
       <div class="jc-concontent">
         <div class="jc-confirm">{{text}}</div>
@@ -45,6 +45,7 @@
     position: fixed;
     z-index: 9999;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);

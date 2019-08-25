@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<navbar :title="'tab 栏'"></navbar>
-		<div class="para"><p> tab 栏组件还是比较常见的，这里的 tab 栏主要是结合 jc-page 组件使用。</p></div>
 		<titler>基本</titler>
 		<jc-tab v-model="tabIndex">
 			<jc-tab-item >全部订单</jc-tab-item>

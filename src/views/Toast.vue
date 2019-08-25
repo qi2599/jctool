@@ -1,9 +1,6 @@
 <template>
 	<div>
 		<navbar :title="'轻提示'"></navbar>
-		<div class="para">
-			<p>组件库中需要使用 toast ， 顺便做了一个，和其他组件库的 toast 没多大区别</p>
-		</div>
 		<titler>演示</titler>
 		<div>
 			<mybtn @click.native="$jcToast({text:'这里是提示文字'})">只显示文字</mybtn>

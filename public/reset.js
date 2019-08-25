@@ -18,19 +18,22 @@ window.onload = function(){
   }
 }
 // rem 适配
-window.onresize=htmlFont
+window.onresize = htmlFont
 htmlFont()
 function htmlFont(){
-  let w = (document.documentElement.clientWidth || document.body.clientWidth)/25
-  let styleNode = document.querySelector('#html-font')
-  if(styleNode){
-    styleNode.innerHTML = "html{font-size:"+w+"px!important}"
-  }else{
-    styleNode = document.createElement('style')
-    styleNode.innerHTML = "html{font-size:"+w+"px!important}"
-    styleNode.id = 'html-font'
-    document.head.appendChild(styleNode)
-  }
+  let w, styleNode, mobileReg = /iPhone|iPad|iPod|Android|UCWEB|huawei|xiaomi|oppo|vivo|meizu|Samsung|mobile/i
+  styleNode = document.querySelector('#html-font')
+  if(mobileReg.test(navigator.userAgent)){
+    w = (document.documentElement.clientWidth || document.body.clientWidth)/25
+    if(styleNode){
+      styleNode.innerHTML = "html{font-size:"+w+"px;}"
+    }else{
+      styleNode = document.createElement('style')
+      styleNode.innerHTML = "html{font-size:"+w+"px;}"
+      styleNode.id = 'html-font'
+      document.head.appendChild(styleNode)
+    }
+  }else if(styleNode) styleNode.innerHTML = ""
 }
 
 // 1. 在 index.html 的 script 标签中添加下面的代码，把 $lazyloadFn 添加为 window 的方法
@@ -40,10 +43,8 @@ function htmlFont(){
 // 5. 如果传入滚动条元素节点不是 window 则滚动条元素须开启定位，且与 img 标签之间的元素不能开启定位及transform
 window.$lazyloadFn = function (el) {
   if(el === undefined) return
-  let index = 0
+  let index=0, oldScroll=0, timeId, imgs
   let scrolly = el.scrollTop || el.pageYOffset || 0
-  let oldScroll = 0
-  let timeId
   el.addEventListener('scroll',lazyload)
   forFn()
   function lazyload(){
@@ -54,7 +55,7 @@ window.$lazyloadFn = function (el) {
     timeId = setTimeout(forFn,200)
   }
   function forFn() {
-    let imgs = document.querySelectorAll('[data-src]')
+    imgs = document.querySelectorAll('[data-src]')
     if(imgs.length === 0){
       el.removeEventListener('scroll',lazyload)
       return
@@ -68,7 +69,7 @@ window.$lazyloadFn = function (el) {
           index++
         }else break
       }
-    }else {
+    } else {
       for (let i=index,length=imgs.length; i<length; i++){
         if(imgs[i].offsetTop <= el.clientHeight + el.scrollTop){
           imgs[i].src = imgs[i].getAttribute("data-src")
