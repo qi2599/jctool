@@ -11,7 +11,8 @@
 				:src="imgs[imgs.length-1]"
 				:class="{'jc-active': active===imgs.length-1 && imgs.length !== 1}"
 				:style="leftImg"
-				@click="$emit('clickItem',imgs.length-1)">
+				@click="$emit('clickItem',imgs.length-1)"
+			>
 			<img
 				:class="{'jc-active':active===index}"
 				:style="imgStyle"
@@ -19,19 +20,22 @@
 				:src="item"
 				:key="index"
 				@load="getPadding"
-				@click="$emit('clickItem',index)">
+				@click="$emit('clickItem',index)"
+			>
 			<img
 				:src="imgs[0]"
 				:class="{'jc-active':active===0 && imgs.length !== 1}"
 				:style="imgStyle"
-				@click="$emit('clickItem',0)">
+				@click="$emit('clickItem',0)"
+			>
 		</div>
 		<div class="jc-dots" v-if="dots">
 			<div
 				v-for="(item,index) in imgs"
 				:class="{dotsActive:active===index}"
 				:style="{transition:`all ${duration}ms`,backgroundColor: active===index?activeColor:''}"
-				:key="index">
+				:key="index"
+			>
 			</div>
 		</div>
 	</div>

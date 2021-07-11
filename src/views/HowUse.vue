@@ -2,7 +2,7 @@
 	<div>
 		<navbar :title="'如何安装'"></navbar>
 		<div class="para">
-			<p><span>1、下载 </span><a style="display: inline-block;color: #2359c5" href="https://github.com/qi2599/joce-ui.git" target="_blank">https://github.com/qi2599/joce-ui.git</a></p>
+			<p><span>1、下载 </span><a style="display: inline-block;color: #2359c5" href="https://github.com/qi2599/jctool.git" target="_blank">https://github.com/qi2599/jctool.git</a></p>
 			<p>2、复制 src\plugin 文件夹到你项目 src 下面</p>
 			<p>3、在 main.js 中引入</p>
 		</div>

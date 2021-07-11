@@ -4,7 +4,7 @@
 			<img src="../../public/logo.svg">
 		</div>
 		<div class="para">
-			<p style="text-indent:2em;">一套实用、精致的个人组件库，组件以封装功能为主，以使用简单、灵活为设计理念。</p>
+			<p style="text-indent:2em;">一套实用、精致的个人组件库，组件以封装功能为主，以使用简约、灵活为设计理念。</p>
 		</div>
 		<div class="menu">
 			<ul>
@@ -93,7 +93,7 @@
 			}
 		},
 		mounted() {
-			this.isMobile()
+			//this.isMobile()
 		}
 	}
 </script>

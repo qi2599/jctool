@@ -4,8 +4,8 @@
 		v-show="isShow && text !== undefined"
 		:style="`transform: scale(${scale});opacity:${opacity};`">
 		<div class="jc-inner">
-			<div v-if="icon === 'loadding'">
-				<img class="jc-loadding" src="../common/loading.svg">
+			<div v-if="icon === 'loading'">
+				<img class="jc-loading" src="../common/loading.svg">
 			</div>
 			<div v-else>
 				<div class="iconfont" v-show="icon" v-html="iconfont"></div>
@@ -62,7 +62,7 @@
 		font-size: 250%;
 		padding-bottom: 15px;
 	}
-	.jc-toast .jc-inner .jc-loadding{
+	.jc-toast .jc-inner .jc-loading{
 		display: inline-block;
 		margin: 0;
 		padding: 0 5px;

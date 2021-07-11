@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<td>icon</td>
-					<td>图标，可选值：'success'，'fail'，'warning'</td>
+					<td>图标，可选值：'success'、'fail'、'warning'、‘loading’</td>
 					<td>string</td>
 					<td></td>
 				</tr>

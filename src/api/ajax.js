@@ -2,11 +2,11 @@
 import axios from 'axios'
 // 自动切换环境
 if (process.env.NODE_ENV == 'development'){
-  axios.defaults.baseURL = 'https://easy-mock.com/mock/5d5283b0f43cf9611833b15e/joce/';
+  axios.defaults.baseURL = 'http://test.gkshwap.com/wapback/app/';
 } else if (process.env.NODE_ENV == 'debug'){
-  axios.defaults.baseURL = 'https://easy-mock.com/mock/5d5283b0f43cf9611833b15e/joce/';
+  axios.defaults.baseURL = 'http://test.gkshwap.com/wapback/app/';
 } else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = 'https://easy-mock.com/mock/5d5283b0f43cf9611833b15e/joce/';
+  axios.defaults.baseURL = 'http://test.gkshwap.com/wapback/app/';
 }
 // 跨域发送cookie
 axios.defaults.withCredentials=true

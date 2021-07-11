@@ -2,7 +2,7 @@
 	<div>
 		<navbar :title="'图片轮播'"></navbar>
 		<div class="banner">
-			<jc-banner :imgs="imgs" :radius="6" :duration="1000" @clickItem="clickItem" @imgLoad="imgLoad"></jc-banner>
+			<jc-banner :imgs="imgs" :radius="6" :duration="1000" @clickItem="clickItem"></jc-banner>
 		</div>
 		<titler :top="0">如何使用</titler>
 		<div>
@@ -74,7 +74,6 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 </template>
 
 <script>
-	import {getBanner} from '../api'
 	export default {
 		data(){
 			return {
@@ -84,22 +83,15 @@ imgs = ['./image/banner/1.jpg','./image/banner/2.jpg']
 		methods:{
 			clickItem(index){
 				console.log(index);
-      },
-			imgLoad(){
-				this.$jcToast({time:0})
-			}
+      }
 		},
 		created(){
-			this.$jcToast({text: '加载中...',icon: 'loadding'})
-			getBanner().then(res => {
-				if(res.success){
-					let newImgs = []
-					res.result.forEach(item => {
-						newImgs.push(item.tab_image_url)
-					})
-					this.imgs = newImgs
-				}
-			})
+			this.imgs = [
+				require('../../public/1.jpg'),
+				require('../../public/2.jpg'),
+				require('../../public/3.jpg'),
+				require('../../public/4.jpg'),
+			]
 		},
 		mounted(){
       window.scrollTo(0,0)

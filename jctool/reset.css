@@ -53,7 +53,6 @@ ul li {
 
 html{
   height: 100%;
-  background-color: black;
 }
 body {
   -webkit-text-size-adjust: none;
@@ -63,7 +62,6 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1;
   background-color: #f6f6f6;
-  max-width: 780px;
   min-height: 100%;
   margin: 0 auto;
 }

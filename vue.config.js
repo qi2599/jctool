@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? 'http://test.gkshwap.com/joce/' : './',
-  outputDir: 'joce',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : './',
+  outputDir: 'jctool',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',

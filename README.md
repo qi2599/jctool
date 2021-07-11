@@ -2,13 +2,13 @@
 
 一套实用、精致的个人组件库，组件以封装功能为主，以使用简单、灵活为设计理念。
 
-组件演示连接 <http://test.gkshwap.com/joce>
+组件演示连接 https://gakei-1306431061.cos-website.ap-guangzhou.myqcloud.com
 
 <br>
 
 ### 如何安装
 
-下载 https://github.com/qi2599/joce-ui.git
+下载 https://github.com/qi2599/jctool.git
 
 复制 src\plugin 文件夹到你项目 src 下面
 
@@ -344,25 +344,37 @@ this.$jcToast({
 
 <br>
 
+### 函数内部的优化
+
+1. 滚动条往回滚时退出滚动条监听事件函数；
+2. 滚动条往前滚且停止滚动时才执行遍历图片是否可见；
+3. 当遍历到图片不可见时，那么它之后的图片都是不可见的，退出遍历；
+4. 已经替换为真实图片地址的不会再遍历；
+5. 当所有图片地址都替换为真实图片地址时，删除滚动条监听；
+6. 获取不到 data-src 属性的 img 标签，删除滚动条监听。
+
+<br>
+
 ```javascript
 window.$lazyloadFn = function (el) {
   if(el === undefined) return
-  let index = 0
+  let index=0, oldScroll=0, timeId, imgs
   let scrolly = el.scrollTop || el.pageYOffset || 0
-  let oldScroll = 0
-  let timeId
   el.addEventListener('scroll',lazyload)
   forFn()
   function lazyload(){
     scrolly = el.scrollTop || el.pageYOffset || 0
-    if(scrolly < oldScroll) return
+    if(scrolly < oldScroll && scrolly > 5) return
     if(scrolly - oldScroll > 300) forFn()
     clearInterval(timeId)
     timeId = setTimeout(forFn,200)
   }
   function forFn() {
-    let imgs = document.querySelectorAll('[data-src]')
-    if(imgs.length === 0) return
+    imgs = document.querySelectorAll('[data-src]')
+    if(imgs.length === 0){
+      el.removeEventListener('scroll',lazyload)
+      return
+    }
     if(scrolly > oldScroll) oldScroll = scrolly
     if(index === imgs.length) el.removeEventListener('scroll',lazyload)
     if(el === window){
@@ -372,7 +384,7 @@ window.$lazyloadFn = function (el) {
           index++
         }else break
       }
-    }else {
+    } else {
       for (let i=index,length=imgs.length; i<length; i++){
         if(imgs[i].offsetTop <= el.clientHeight + el.scrollTop){
           imgs[i].src = imgs[i].getAttribute("data-src")
